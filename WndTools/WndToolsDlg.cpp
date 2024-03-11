@@ -211,7 +211,7 @@ void CWndToolsDlg::Init()
 
 		if (pfnGetSettingDlg != NULL)
 		{
-			m_AlwayOnTop = pfnGetSettingDlg(&m_Tabs);
+			m_AlwayOnTop = (CDialogEx*)pfnGetSettingDlg(&m_Tabs);
 			m_Tabs.InsertItem(1, _T("AlwayOnTop"));
 			m_AlwayOnTop->SetWindowPos(NULL, 5, 30, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 		}
