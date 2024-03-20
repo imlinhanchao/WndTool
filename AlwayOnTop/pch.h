@@ -12,4 +12,16 @@
 
 #include "resource.h"
 
+#include "ref/Path.h"
+#include "ref/Ini.h"
+#include "ref/Log.h"
+#include "ref/Cvt.h"
+#include "ref/Shell.h"
+#include "ref/Registry.h"
+#include "ref/Utility.h"
+#include "ref/HotKey.h"
+#include "ref/RawInput.h"
+#include "ref/WndCtrl.h"
+using namespace Easy;
+
 #endif //PCH_H

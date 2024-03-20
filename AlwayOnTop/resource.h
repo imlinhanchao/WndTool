@@ -2,6 +2,7 @@
 // Microsoft Visual C++ 生成的包含文件。
 // 供 AlwayOnTop.rc 使用
 //
+#define IDD_DLG_BORDER                  103
 #define IDD_DLG_SETTING                 1000
 #define IDC_STATIC_FOCUS2               1023
 #define IDC_EDIT1                       1024

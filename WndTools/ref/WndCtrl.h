@@ -27,7 +27,7 @@ public:
 	static bool MouseClick(CPoint pt) { return MouseClick(pt.x, pt.y); }
 	static bool MouseClick(int nX, int nY);
 
-	static bool GetText(HWND hWnd, TCHAR* szText, int& nMaxCount);
+	static bool GetText(HWND hWnd, TCHAR* szText, LRESULT& nMaxCount);
 	static void Focus(HWND hWnd);
 	static HWND GetFocus();
 

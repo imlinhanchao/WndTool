@@ -6,6 +6,20 @@
 
 namespace Easy {
 
+CString Path::SaftFileName(CString sName)
+{
+	sName.Replace(_T("\\"), _T("_"));
+	sName.Replace(_T("/"), _T("_"));
+	sName.Replace(_T(":"), _T("_"));
+	sName.Replace(_T("*"), _T("_"));
+	sName.Replace(_T("?"), _T("_"));
+	sName.Replace(_T("\""), _T("_"));
+	sName.Replace(_T("<"), _T("_"));
+	sName.Replace(_T(">"), _T("_"));
+	sName.Replace(_T("|"), _T("_"));
+	return sName;
+}
+
 CString Path::GetFileName( CString sPath )
 {
 	CString sFilename(PathFindFileName(sPath.GetBuffer()));
@@ -341,8 +355,14 @@ bool Path::Create( CString sPath )
 	PathAddBackslash(sPath.GetBuffer(sPath.GetLength() + 1));
 	sPath.ReleaseBuffer();
 
+#ifdef _UNICODE
 	USES_CONVERSION;	
 	return MakeSureDirectoryPathExists(T2A(sPath));
+#else
+	bool bSuccess = MakeSureDirectoryPathExists(sPath.GetBuffer());
+	sPath.ReleaseBuffer();
+	return bSuccess;
+#endif
 }
 
 }

@@ -51,9 +51,6 @@
     <ClInclude Include="ref\Log.h">
       <Filter>ref</Filter>
     </ClInclude>
-    <ClInclude Include="ref\Path.h">
-      <Filter>ref</Filter>
-    </ClInclude>
     <ClInclude Include="ref\RawInput.h">
       <Filter>ref</Filter>
     </ClInclude>
@@ -84,6 +81,9 @@
     <ClInclude Include="definition.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ref\Path.h">
+      <Filter>ref</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WndTools.cpp">
@@ -105,9 +105,6 @@
       <Filter>ref</Filter>
     </ClCompile>
     <ClCompile Include="ref\Log.cpp">
-      <Filter>ref</Filter>
-    </ClCompile>
-    <ClCompile Include="ref\Path.cpp">
       <Filter>ref</Filter>
     </ClCompile>
     <ClCompile Include="ref\RawInput.cpp">
@@ -136,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="CHotKeyDlg.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Path.cpp">
+      <Filter>ref</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

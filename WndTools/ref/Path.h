@@ -17,6 +17,14 @@ class Path
 public:
 
 	/*!
+	 * @brief SaftFileName 
+	 * 
+	 * Replace invalid characters in filename
+	 * @param sName The filename.
+	 * @return CString The final filename
+	*/
+	static CString SaftFileName(CString sName);
+	/*!
 	 * @brief GetFileName 
 	 * 
 	 * Get filename from path

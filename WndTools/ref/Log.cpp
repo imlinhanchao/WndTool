@@ -44,7 +44,7 @@ CString CLogApp::Write( const TCHAR* pszFormat, ... )
 
 	va_start(vargs, pszFormat);
 
-	_vsnwprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
+	_vsntprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
 
 	CString sLog(szMsg);
 	CString sTime;
@@ -91,7 +91,7 @@ CString CLogApp::Debug( const TCHAR* pszFormat, ... )
 
 	va_start(vargs, pszFormat);
 
-	_vsnwprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
+	_vsntprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
 
 	CString sLog(szMsg);
 	CString sTime;
@@ -114,7 +114,7 @@ CString CLogApp::Print( const TCHAR* pszFormat, ... )
 
 	va_start(vargs, pszFormat);
 
-	_vsnwprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
+	_vsntprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
 
 	CString sLog(szMsg);
 	CString sTime;
@@ -137,7 +137,7 @@ CString CLogApp::WriteFile( const TCHAR* pszFormat, ... )
 
 	va_start(vargs, pszFormat);
 
-	_vsnwprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
+	_vsntprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
 
 	CString sLog(szMsg);
 	CString sTime;
@@ -169,7 +169,7 @@ CString CLogApp::List( const TCHAR* pszFormat, ... )
 
 	va_start(vargs, pszFormat);
 
-	_vsnwprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
+	_vsntprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
 
 	CString sLog(szMsg);
 	CString sTime;

@@ -178,14 +178,13 @@ void CWndToolsDlg::OnBnClickedOk()
 void CWndToolsDlg::OnTcnSelchangeTabSetting(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	int nIndex = m_Tabs.GetCurSel();
-	CDialogEx* pDlgs [] = { &m_HotKeyDlg, m_AlwayOnTop };
-	const int nSize = sizeof(pDlgs) / sizeof(CDialogEx*);
+	const size_t nSize = m_lstSettingDlg.size();
 	for (int i = 0; i < nSize; i++) {
-		pDlgs[i]->ShowWindow(nIndex == i ? SW_SHOW : SW_HIDE);
+		m_lstSettingDlg.at(i)->ShowWindow(nIndex == i ? SW_SHOW : SW_HIDE);
 	}
 
 	CRect rect;
-	pDlgs[nIndex]->GetWindowRect(rect);
+	m_lstSettingDlg.at(nIndex)->GetWindowRect(rect);
 	Resize(rect);
 	
 	*pResult = 0;
@@ -202,20 +201,9 @@ void CWndToolsDlg::Init()
 	m_HotKeyDlg.GetWindowRect(rcHotKey);
 	m_Tabs.GetWindowRect(rcTab);
 	GetWindowRect(rcClient);
+	m_lstSettingDlg.push_back(&m_HotKeyDlg);
 
-	HINSTANCE hDll = LoadLibrary(_T("plugin\\AlwayOnTop\\main.dll"));  // 替换为 DLL 的文件名
-
-	if (hDll != NULL)
-	{
-		PFN_GET_SETTING pfnGetSettingDlg = (PFN_GET_SETTING)GetProcAddress(hDll, "GetSettingDlg");
-
-		if (pfnGetSettingDlg != NULL)
-		{
-			m_AlwayOnTop = (CDialogEx*)pfnGetSettingDlg(&m_Tabs);
-			m_Tabs.InsertItem(1, _T("AlwayOnTop"));
-			m_AlwayOnTop->SetWindowPos(NULL, 5, 30, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
-		}
-	}
+	LoadPlugin();
 
 	m_TabMargin.l = rcTab.left;
 	m_TabMargin.t = rcTab.top;
@@ -229,6 +217,46 @@ void CWndToolsDlg::Init()
 	m_HotKeyDlg.SetWindowPos(NULL, 5, 30, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_SHOWWINDOW);
 
 	CenterWindow();
+}
+
+void CWndToolsDlg::LoadPlugin()
+{
+	std::vector<CString> lstPlugin = Path::GetFileList(Path::GetCurDirectory(_T("plugin")));
+
+	for (std::vector<CString>::iterator plugin = lstPlugin.begin(); plugin != lstPlugin.end(); plugin++) {
+		CString sPluginPath = Path::Resolve(*plugin, _T("main.dll"));
+
+		HINSTANCE hDll = LoadLibrary(sPluginPath.GetBuffer());  // 替换为 DLL 的文件名
+		sPluginPath.ReleaseBuffer();
+
+		if (hDll != NULL)
+		{
+			Plugin::LOADER pLoader = (Plugin::LOADER)GetProcAddress(hDll, "Loader");
+
+			if (pLoader != NULL)
+			{
+				pLoader(m_hWnd);
+			}
+
+			Plugin::GETEXECUTESCOUNT pGetExecutesCount = (Plugin::GETEXECUTESCOUNT)GetProcAddress(hDll, "GetExecutesCount");
+
+			if (pGetExecutesCount != NULL)
+			{
+				int nCount = pGetExecutesCount();
+				Plugin::GETEXECUTES pGetExecutes = (Plugin::GETEXECUTES)GetProcAddress(hDll, "GetExecutes");
+				if (pGetExecutes == NULL || nCount == 0) continue;
+				Plugin::PPLUGIN_EXECUTE pExecutes = pGetExecutes();
+				for (int i = 0; i < pGetExecutesCount(); i++) {
+					m_Plugins.insert(std::pair<CString, Plugin::PPLUGIN_EXECUTE>(pExecutes[i].szName, &pExecutes[i]));
+					if (pExecutes[i].pSettingDlg != NULL) {
+						pExecutes[i].pSettingDlg->SetWindowPos(NULL, 15, 45, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+						m_lstSettingDlg.push_back(pExecutes[i].pSettingDlg);
+						m_Tabs.InsertItem(m_Tabs.GetItemCount(), pExecutes[i].szName);
+					}
+				}
+			}
+		}
+	}
 }
 
 void CWndToolsDlg::Resize(CRect rcChild)

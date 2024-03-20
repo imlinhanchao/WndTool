@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ref">
+      <UniqueIdentifier>{11156956-2d5e-4b4b-8bab-8b47881edb77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -22,6 +25,39 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="AppCtrl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Cvt.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\HotKey.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Ini.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Log.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Path.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\RawInput.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Registry.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Shell.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\Utility.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\WndCtrl.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="CBorderDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,6 +86,39 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="AppCtrl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\Cvt.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\HotKey.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\Ini.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\Log.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\Path.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\RawInput.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\Registry.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\Shell.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\Utility.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\WndCtrl.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="CBorderDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

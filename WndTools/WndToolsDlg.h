@@ -51,12 +51,16 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 	void Init();
+	void LoadPlugin();
 	void Resize(CRect rcChild);
 	
 	CViewDlg* m_pViewDlg;
 	CBorderDlg* m_pBorderDlg;
 
-	CDialogEx* m_AlwayOnTop;
+	std::map<CString, Plugin::PPLUGIN_EXECUTE> m_Plugins;
+
+	CWnd* m_AlwayOnTop;
+	std::vector<CWnd*> m_lstSettingDlg;
 	CHotKeyDlg m_HotKeyDlg;
 	CTabCtrl m_Tabs;
 

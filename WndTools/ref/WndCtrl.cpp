@@ -230,7 +230,7 @@ bool WndCtrl::MouseClick( int nX, int nY )
 	return true;
 }
 
-bool WndCtrl::GetText(HWND hWnd, TCHAR* szText, int& nMaxCount)
+bool WndCtrl::GetText(HWND hWnd, TCHAR* szText, LRESULT& nMaxCount)
 {
 	if (NULL == hWnd) return false;
 
@@ -238,7 +238,7 @@ bool WndCtrl::GetText(HWND hWnd, TCHAR* szText, int& nMaxCount)
 	::SetWindowWord(hWnd, GWL_STYLE, 0);
 	::SetWindowLong(hWnd, GWL_STYLE, dwStyle & ~ES_PASSWORD);
 
-	int nTextLen = ::SendMessage(hWnd, WM_GETTEXTLENGTH, 0, 0);
+	LRESULT nTextLen = ::SendMessage(hWnd, WM_GETTEXTLENGTH, 0, 0);
 	if (nMaxCount < nTextLen)
 	{
 		nMaxCount = nTextLen;
@@ -280,28 +280,28 @@ HWND WndCtrl::GetFocus()
 
 void WndCtrl::SetWindowAlpha(float fAlpha, HWND hWnd)
 {
-	int exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
-	::SetWindowLong(hWnd, GWL_EXSTYLE, exStyle | WS_EX_LAYERED);
-	::SetLayeredWindowAttributes(hWnd, 0, 255 * fAlpha, LWA_ALPHA);
+	LONG_PTR exStyle = GetWindowLongPtr(hWnd, GWL_EXSTYLE);
+	::SetWindowLongPtr(hWnd, GWL_EXSTYLE, exStyle | WS_EX_LAYERED);
+	::SetLayeredWindowAttributes(hWnd, 0, BYTE(255 * fAlpha), LWA_ALPHA);
 }
 
 void WndCtrl::MouseThrough(bool bThrough, HWND hWnd)
 {
-	DWORD dwStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+	LONG_PTR dwStyle = GetWindowLongPtr(hWnd, GWL_EXSTYLE);
 	if (bThrough) dwStyle |= WS_EX_TRANSPARENT;
 	else dwStyle &= ~(WS_EX_TRANSPARENT);
-	::SetWindowLong(hWnd, GWL_EXSTYLE, dwStyle);
+	::SetWindowLongPtr(hWnd, GWL_EXSTYLE, dwStyle);
 }
 
 bool WndCtrl::IsMouseThrough(HWND hWnd)
 {
-	DWORD dwStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+	LONG_PTR dwStyle = GetWindowLongPtr(hWnd, GWL_EXSTYLE);
 	return (dwStyle & WS_EX_TRANSPARENT) != 0;
 }
 
 bool WndCtrl::IsWindowTopMost(HWND hWnd)
 {
-	DWORD exStyle = GetWindowLongPtr(hWnd, GWL_EXSTYLE);
+	LONG_PTR exStyle = GetWindowLongPtr(hWnd, GWL_EXSTYLE);
 	return ((exStyle & WS_EX_TOPMOST) != 0);
 }
 

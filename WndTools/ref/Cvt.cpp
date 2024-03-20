@@ -86,7 +86,7 @@ CString Cvt::ToString( const TCHAR* pszFormat, ... )
 
 	va_start(vargs, pszFormat);
 
-	_vsnwprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
+	_vsntprintf_s( szMsg, sizeof(szMsg) - 1, pszFormat, vargs);
 
 	return CString(szMsg);
 }
