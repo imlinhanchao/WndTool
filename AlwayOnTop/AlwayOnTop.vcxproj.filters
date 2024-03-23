@@ -14,20 +14,23 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="ref">
-      <UniqueIdentifier>{11156956-2d5e-4b4b-8bab-8b47881edb77}</UniqueIdentifier>
+      <UniqueIdentifier>{f1cfd751-b53d-46cc-9344-0e9c4f666b62}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Plugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="SettingDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="AppCtrl.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ref\Cvt.cpp">
+      <Filter>ref</Filter>
+    </ClCompile>
+    <ClCompile Include="ref\DC.cpp">
       <Filter>ref</Filter>
     </ClCompile>
     <ClCompile Include="ref\HotKey.cpp">
@@ -62,10 +65,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AlwayOnTop.def">
+    <None Include="Plugin.def">
       <Filter>源文件</Filter>
     </None>
-    <None Include="res\AlwayOnTop.rc2">
+    <None Include="res\Plugin.rc2">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
@@ -79,16 +82,19 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Plugin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SettingDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="AppCtrl.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="ref\Cvt.h">
+      <Filter>ref</Filter>
+    </ClInclude>
+    <ClInclude Include="ref\DC.h">
       <Filter>ref</Filter>
     </ClInclude>
     <ClInclude Include="ref\HotKey.h">
@@ -123,7 +129,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="AlwayOnTop.rc">
+    <ResourceCompile Include="Plugin.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>

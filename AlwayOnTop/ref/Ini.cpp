@@ -110,12 +110,21 @@ bool Ini::Read( CString sSection, CString sKeyName, int& nValue )
 	return bSuccess;
 }
 
+bool Ini::Read(CString sSection, CString sKeyName, DWORD& nValue)
+{
+	CString sValue;
+	bool bSuccess = Read(sSection, sKeyName, sValue);
+
+	if (bSuccess) nValue = _ttol(sValue);
+	return bSuccess;
+}
+
 bool Ini::Read( CString sSection, CString sKeyName, UINT& nValue )
 {
 	CString sValue;
 	bool bSuccess = Read(sSection, sKeyName, sValue);
 
-	if(bSuccess) nValue = _ttol(sValue);
+	if(bSuccess) nValue = _tcstoul(sValue, NULL, 10);
 	return bSuccess;
 }
 

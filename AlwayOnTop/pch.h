@@ -22,6 +22,7 @@
 #include "ref/HotKey.h"
 #include "ref/RawInput.h"
 #include "ref/WndCtrl.h"
+#include "ref/DC.h"
 using namespace Easy;
 
 #endif //PCH_H

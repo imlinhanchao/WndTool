@@ -1,20 +1,23 @@
 ﻿//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ 生成的包含文件。
-// 供 AlwayOnTop.rc 使用
+// 供 Plugin.rc 使用
 //
-#define IDD_DLG_BORDER                  103
 #define IDD_DLG_SETTING                 1000
-#define IDC_STATIC_FOCUS2               1023
-#define IDC_EDIT1                       1024
-#define IDC_SPIN1                       1025
+#define IDC_BUTTON1                     1000
+#define IDC_BTN_SETTING                 1000
+#define IDD_DIALOG1                     1002
+#define IDD_DLG_BORDER                  1002
+#define IDC_STATIC_CLR                  1023
+#define IDC_EDIT_SIZE                   1024
+#define IDC_SPIN_SIZE                   1025
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        1002
+#define _APS_NEXT_RESOURCE_VALUE        1004
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           1000
 #endif
 #endif

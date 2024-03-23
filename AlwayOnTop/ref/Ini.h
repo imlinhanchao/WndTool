@@ -58,6 +58,7 @@ public:
 	bool Read(CString sSection,   CString sKeyName,	  ULONGLONG& dwValue);
 	bool Read(CString sSection,   CString sKeyName,   CString& sValue);
 	bool Read(CString sSection,   CString sKeyName,   int&     nValue);
+	bool Read(CString sSection,	  CString sKeyName,   DWORD&   dwValue);
 	bool Read(CString sSection,   CString sKeyName,   UINT&    nValue);
 	bool Read(CString sSection,   CString sKeyName,   long&    nValue);
 	bool Read(CString sSection,   CString sKeyName,   bool&    bValue);

@@ -8,6 +8,7 @@
 #include "WndToolsDlg.h"
 #include "afxdialogex.h"
 
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -233,9 +234,13 @@ void CWndToolsDlg::LoadPlugin()
 		{
 			Plugin::LOADER pLoader = (Plugin::LOADER)GetProcAddress(hDll, "Loader");
 
+			DWORD dwError = 0;
 			if (pLoader != NULL)
 			{
 				pLoader(m_hWnd);
+			}
+			else {
+				dwError = GetLastError();
 			}
 
 			Plugin::GETEXECUTESCOUNT pGetExecutesCount = (Plugin::GETEXECUTESCOUNT)GetProcAddress(hDll, "GetExecutesCount");

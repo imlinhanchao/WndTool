@@ -170,7 +170,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

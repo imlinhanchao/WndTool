@@ -86,6 +86,11 @@ CString Path::Omit( CString sPath, int nSize )
 	return sOmitPath;
 }
 
+CString Path::GetInstanceDirectory(CString sPath)
+{
+	return Resolve(GetDirectory(GetProgramPath(AfxGetInstanceHandle())), sPath);
+}
+
 CString Path::GetCurDirectory( CString sPath/*=_T("")*/ )
 {
 	return Resolve(GetDirectory(GetProgramPath()), sPath);
@@ -135,10 +140,10 @@ CString Path::GetStartMenuDirectory( CString sPath/*=_T("")*/ )
 	return Resolve(CString(szPath), sPath);
 }
 
-CString Path::GetProgramPath(void)
+CString Path::GetProgramPath(HMODULE hModule)
 {
 	CString sPath = _T("");
-	GetModuleFileName(NULL, sPath.GetBuffer(MAX_PATH), MAX_PATH);
+	GetModuleFileName(hModule, sPath.GetBuffer(MAX_PATH), MAX_PATH);
 	sPath.ReleaseBuffer();
 	return sPath;
 }

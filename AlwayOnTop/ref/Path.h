@@ -83,15 +83,23 @@ public:
 	 */
 	static CString Omit(CString sPath, int nSize);
 
+	/*!
+	 * @brief GetInstanceDirectory
+	 *
+	 * The Directory of Instance
+	 * @param sPath The path you want to expand.
+	 * @return CString The final path
+	 */
+	static CString GetInstanceDirectory(CString sPath = _T(""));
 
 	/*!
-	 * @brief GetCurDirectory 
-	 * 
+	 * @brief GetCurDirectory
+	 *
 	 * The Directory of Program
 	 * @param sPath The path you want to expand.
 	 * @return CString The final path
 	 */
-	static CString GetCurDirectory(CString sPath=_T(""));
+	static CString GetCurDirectory(CString sPath = _T(""));
 
 	/*!
 	 * @brief GetTmpDirectory 
@@ -151,9 +159,10 @@ public:
 	 * @brief GetProgramPath 
 	 * 
 	 * Get program path
+	 * @param hModule The module handle
 	 * @return CString The program path
 	 */
-	static CString GetProgramPath(void);
+	static CString GetProgramPath(HMODULE hModule=NULL);
 
 	/*!
 	 * @brief GetProgramName 
